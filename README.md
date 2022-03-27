@@ -3,3 +3,4 @@
 3. create_form
 4. create_detail_view
 5. display_INDEX_DETAIL_INsameURL
+6. Create_buttons_on_detail
