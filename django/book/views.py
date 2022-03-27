@@ -11,13 +11,19 @@ def first_views(request):
 
 def index(request, pk):
     author = Author.objects.get(pk=pk)
-    form = BookFormSet(request.POST or None)
+    form = BookForm(request.POST or None)
 
     if request.method == 'POST':
         if form.is_valid():
-            form.instance = author
-            form.save()
-            return redirect('index', pk=author.id)
+            book = form.save(commit=False)
+            book.author = author
+            book.save()
+            return redirect('detail-form', pk=book.id)
+        else:
+            context = {
+                "form": form,
+            }
+            return render(request, "partials/create_form.html", context)
 
     context = {
         "author": author,
@@ -32,3 +38,11 @@ def create_form(request):
         "form": BookForm()
     }
     return render(request, "partials/create_form.html", context)
+
+
+def detail_form(request, pk):
+    book = Book.objects.get(pk=pk)
+    context = {
+        "book": book,
+    }
+    return render(request, "partials/detail_form.html", context)
