@@ -17,6 +17,7 @@
 
     <script>
         document.body.addEventListener('htmx:configRequest', (e) => { e.detail.headers['X-CSRFToken'] = '{{ csrf_token }}' })
+//         https://docs.djangoproject.com/en/3.2/ref/csrf/#ajax
         // https://htmx.org/docs/#config_request_with_events
     </script>
 
