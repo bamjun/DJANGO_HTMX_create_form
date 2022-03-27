@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block base %}
+<h1> Create Book for {{ author.name }}</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.management_form}}
+    {{ form.as_p }}
+    <button>Submit</button>
+</form>
+
+{% endblock %}
