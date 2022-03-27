@@ -11,6 +11,7 @@ def first_views(request):
 
 def index(request, pk):
     author = Author.objects.get(pk=pk)
+    books = Book.objects.filter(author=author)
     form = BookForm(request.POST or None)
 
     if request.method == 'POST':
@@ -28,6 +29,7 @@ def index(request, pk):
     context = {
         "author": author,
         "form": form,
+        "books": books,
     }
 
     return render(request, "book/index.html", context)

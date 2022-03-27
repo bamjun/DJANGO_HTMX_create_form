@@ -6,7 +6,11 @@
 <button hx-get="{% url 'create-form' %}" hx-swap="beforeend" hx-target="#bookforms">Add book</button>
 <!-- https://htmx.org/docs/#swapping -->
 
-<div id="bookforms"></div>
+<div id="bookforms">
+    {% for book in books %}
+    {% include 'partials/detail_form.html' %}
+    {% endfor %}
+</div>
 
 
 {% endblock %}
