@@ -25,3 +25,10 @@ def index(request, pk):
     }
 
     return render(request, "book/index.html", context)
+
+
+def create_form(request):
+    context = {
+        "form": BookForm()
+    }
+    return render(request, "partials/create_form.html", context)

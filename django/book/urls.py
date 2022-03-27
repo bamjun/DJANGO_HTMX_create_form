@@ -4,4 +4,5 @@ from . import views
 urlpatterns = [
     path('', views.first_views),
     path('<pk>/', views.index, name='index'),
+    path('htmx/create-form/', views.create_form, name='create-form'),
 ]
