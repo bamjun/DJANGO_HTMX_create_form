@@ -1,6 +1,11 @@
 <div hx-target="this" hx-swap="outerHTML">
     <form>
         {{ form }}
+
+        {% if book %}
+        <button hx-post="{% url 'update-form' book.id %}">Submit</button>
+        {% else %}
         <button hx-post=".">Submit</button>
+        {% endif %}
     </form>
 </div>

@@ -51,6 +51,22 @@ def detail_form(request, pk):
     return render(request, "partials/detail_form.html", context)
 
 
+def update_form(request, pk):
+    book = Book.objects.get(pk=pk)
+    form = BookForm(request.POST or None, instance=book)
+
+    if request.method == 'POST':
+        if form.is_valid():
+            book = form.save()
+            return redirect('detail-form', pk=book.id)
+
+    context = {
+        "form": form,
+        "book": book
+    }
+    return render(request, "partials/create_form.html", context)
+
+
 def delete_form(request, pk):
     book = Book.objects.get(pk=pk)
     book.delete()

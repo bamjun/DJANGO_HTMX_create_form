@@ -7,4 +7,5 @@ urlpatterns = [
     path('htmx/create-form/', views.create_form, name='create-form'),
     path('htmx/<pk>/', views.detail_form, name='detail-form'),
     path('htmx/<pk>/delete_form', views.delete_form, name='delete-form'),
+    path('htmx/<pk>/update_form', views.update_form, name='update-form'),
 ]
