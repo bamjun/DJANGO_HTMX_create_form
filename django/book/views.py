@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from .models import Author, Book
 from .forms import BookForm, BookFormSet
@@ -48,3 +49,9 @@ def detail_form(request, pk):
         "book": book,
     }
     return render(request, "partials/detail_form.html", context)
+
+
+def delete_form(request, pk):
+    book = Book.objects.get(pk=pk)
+    book.delete()
+    return HttpResponse("")
